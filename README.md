@@ -6,4 +6,4 @@ The user can also select the size of the chess board (6 -16) and the number of m
 
 All possible paths that do not exceed the given number of moves are shown.
 
-If more than one paths use the same intermedite position, then only the fastest route is shown.
+If more than one paths use the same intermediate position, then only the fastest route is shown.
