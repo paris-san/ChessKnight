@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ChessKnight</string>
+    <string name="change_board_size">Change board size</string>
+    <string name="select_board_size">Select board size (6–16)</string>
+    <string name="start_position">Start position</string>
+    <string name="end_position">End position</string>
+    <string name="select_number_moves">Number of moves</string>
+    <string name="default_moves_number">3</string>
+    <string name="default_board_size">8</string>
+    <string name="hint_position_start">eg. a1</string>
+    <string name="hint_position_end">eg. d6</string>
+    <string name="find_paths">Find paths!</string>
+    <string name="reset">Reset</string>
+    <string name="invalid_chess_size">Please use a number between 6 and 16</string>
+    <string name="invalid_moves_number">Please choose a reasonable number</string>
+    <string name="select_start">Hint : Select starting position</string>
+    <string name="select_end">Hint : Select end position</string>
+    <string name="start_calculations">Hint : Click on Find paths</string>
+    <string name="reset_the_board">Hint : Reset the board to try another case</string>
+    <string name="error_message">Sorry, there was an error</string>
+    <string name="found_path">We found at least one path!</string>
+    <string name="not_found_path">Sorry, we did not find any paths</string>
+</resources>

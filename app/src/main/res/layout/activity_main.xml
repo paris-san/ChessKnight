@@ -1,0 +1,124 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="mainViewModel"
+            type="com.paris.chessknight.viewmodels.MainViewModel" />
+
+        <variable
+            name="mainActivity"
+            type="com.paris.chessknight.ui.MainActivity" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginEnd="10dp"
+                    android:onClick="@{() -> mainActivity.onChangeSizeClicked()}"
+                    android:text="@string/change_board_size" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:onClick="@{() -> mainActivity.onResetClicked()}"
+                    android:text="@string/reset" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:text="@={mainViewModel.hint}"
+                android:textAlignment="center"
+                android:textStyle="italic" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chess_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:visibility="@{safeUnbox(mainViewModel.stateOfBoard) == mainViewModel.STATE_CALCULATING ? View.VISIBLE : View.GONE}" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/choose_numbers_of_moves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/select_number_moves" />
+
+                <EditText
+                    android:id="@+id/number_moves"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/choose_numbers_of_moves"
+                    android:inputType="number"
+                    android:text="@={mainViewModel.movesNumber}" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="@{safeUnbox(mainViewModel.stateOfBoard) == mainViewModel.STATE_END_POSITION_SELECTED}"
+                    android:enabled="@{safeUnbox(mainViewModel.stateOfBoard) == mainViewModel.STATE_END_POSITION_SELECTED}"
+                    android:onClick="@{() -> mainViewModel.onFindPathsClicked()}"
+                    android:text="@string/find_paths" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_marginBottom="20dp"
+                android:text="@={mainViewModel.solutions}" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
